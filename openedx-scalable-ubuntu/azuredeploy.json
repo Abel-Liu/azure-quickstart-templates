@@ -31,9 +31,8 @@
     },
     "appVmSize": {
       "type": "string",
-      "defaultValue": "Standard_D2",
+      "defaultValue": "Standard_DS2",
       "allowedValues": [
-        "Standard_D2",
         "Standard_DS2",
         "Standard_DS3",
         "Standard_DS4",
@@ -57,9 +56,8 @@
     },
     "mySqlVmSize": {
       "type": "string",
-      "defaultValue": "Standard_D2",
+      "defaultValue": "Standard_DS2",
       "allowedValues": [
-        "Standard_D2",
         "Standard_DS2",
         "Standard_DS3",
         "Standard_DS4",
@@ -83,9 +81,8 @@
     },
     "mongoVmSize": {
       "type": "string",
-      "defaultValue": "Standard_D2",
+      "defaultValue": "Standard_DS2",
       "allowedValues": [
-        "Standard_D2",
         "Standard_DS2",
         "Standard_DS3",
         "Standard_DS4",
