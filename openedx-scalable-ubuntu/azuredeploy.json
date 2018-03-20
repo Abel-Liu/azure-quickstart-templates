@@ -23,7 +23,7 @@
     },
     "appVmCount": {
       "type": "int",
-      "maxValue": 20,
+      "maxValue": 2,
       "defaultValue": 1,
       "metadata": {
         "description": "Number of application virtual machines behind the load balancer."
@@ -31,8 +31,9 @@
     },
     "appVmSize": {
       "type": "string",
-      "defaultValue": "Standard_DS2_v2",
+      "defaultValue": "Standard_D2",
       "allowedValues": [
+        "Standard_D2",
         "Standard_DS2",
         "Standard_DS3",
         "Standard_DS4",
@@ -56,8 +57,9 @@
     },
     "mySqlVmSize": {
       "type": "string",
-      "defaultValue": "Standard_DS2_v2",
+      "defaultValue": "Standard_D2",
       "allowedValues": [
+        "Standard_D2",
         "Standard_DS2",
         "Standard_DS3",
         "Standard_DS4",
@@ -81,8 +83,9 @@
     },
     "mongoVmSize": {
       "type": "string",
-      "defaultValue": "Standard_DS2_v2",
+      "defaultValue": "Standard_D2",
       "allowedValues": [
+        "Standard_D2",
         "Standard_DS2",
         "Standard_DS3",
         "Standard_DS4",
@@ -107,7 +110,7 @@
   },
   "variables": {
     "apiVersion": "2015-06-15",
-    "scriptDownloadUri": "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/openedx-scalable-ubuntu/",
+    "scriptDownloadUri": "https://raw.githubusercontent.com/abel-liu/azure-quickstart-templates/master/openedx-scalable-ubuntu/",
     "installScript": "install-openedx.sh",
     "installCommand": "[concat('bash -c ''nohup ./', variables('installScript'), ' ', parameters('appVmCount'), ' ', parameters('adminUsername'), ' ', parameters('adminPassword'), ' </dev/null &>/var/log/azure/openedx-install.log &''')]",
     "availabilitySetName": "avail-set",
@@ -515,7 +518,7 @@
           "osDisk": {
             "name": "[concat(variables('appVmName'),copyIndex(),'-osdisk')]",
             "vhd": {
-              "uri": "[concat('http://', variables('storageAccountName'), '.blob.core.windows.net/', variables('vhdBlobContainer'), '/', variables('appVmName'), copyIndex(), '-disk.vhd')]"
+              "uri": "[concat('http://', variables('storageAccountName'), '.blob.core.chinacloudapi.cn/', variables('vhdBlobContainer'), '/', variables('appVmName'), copyIndex(), '-disk.vhd')]"
             },
             "caching": "ReadWrite",
             "createOption": "FromImage"
@@ -562,7 +565,7 @@
           "osDisk": {
             "name": "[concat(variables('mySqlVmName'),'-osdisk')]",
             "vhd": {
-              "uri": "[concat('http://', variables('storageAccountName'), '.blob.core.windows.net/', variables('vhdBlobContainer'), '/', variables('mySqlVmName'), '-disk.vhd')]"
+              "uri": "[concat('http://', variables('storageAccountName'), '.blob.core.chinacloudapi.cn/', variables('vhdBlobContainer'), '/', variables('mySqlVmName'), '-disk.vhd')]"
             },
             "caching": "ReadWrite",
             "createOption": "FromImage"
@@ -605,7 +608,7 @@
           "osDisk": {
             "name": "[concat(variables('mongoVmName'),'-osdisk')]",
             "vhd": {
-              "uri": "[concat('http://', variables('storageAccountName'), '.blob.core.windows.net/', variables('vhdBlobContainer'), '/', variables('mongoVmName'), '-disk.vhd')]"
+              "uri": "[concat('http://', variables('storageAccountName'), '.blob.core.chinacloudapi.cn/', variables('vhdBlobContainer'), '/', variables('mongoVmName'), '-disk.vhd')]"
             },
             "caching": "ReadWrite",
             "createOption": "FromImage"
